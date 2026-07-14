@@ -337,10 +337,9 @@ This project directly supports **UN SDG 9: Industry, Innovation and Infrastructu
 
 | Name | Roll No. |
 |---|---|
-| Ismaeel Shaikh | 23104044 |
 | Rehan Shaikh | 23104063 |
 | **Krish Shejwal** | **23104079** |
-| Aptab Shaikh | 23104208 |
+
 
 **Guide:** Ms. Charul Singh
 **HOD:** Dr. Kiran Deshpande
