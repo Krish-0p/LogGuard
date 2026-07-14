@@ -1,0 +1,77 @@
+cat > .gitignore << 'EOF'
+# === SECRETS ===
+.env
+.env.*
+!.env.example
+
+# === PYTHON ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+venv/
+.venv/
+env/
+*_env/
+logguard_env/
+*.egg-info/
+dist/
+build/
+
+# === ML / DATA ===
+*.csv
+*.parquet
+*.json.gz
+*.pkl
+*.pickle
+*.pt
+*.pth
+*.h5
+*.hdf5
+*.onnx
+*.bin
+*.model
+mlruns/
+mlartifacts/
+
+# === MINIO ===
+minio-data/
+.minio/
+
+# === KAFKA ===
+kafka-logs/
+kafka/data/
+zookeeper/data/
+
+# === JAVA / FLINK ===
+*.jar
+*.jar.*
+
+# === DOCKER ===
+*.tar
+docker-volumes/
+
+# === KUBERNETES ===
+*-secret.yaml
+*-secrets.yaml
+kubeconfig
+
+# === NODE ===
+node_modules/
+.next/
+dist/
+
+# === MEDIA ===
+*.mp4
+*.mov
+*.avi
+*.webm
+
+# === LOGS & TEMP ===
+*.log
+nohup.out
+*.tmp
+.DS_Store
+.vscode/settings.json
+EOF

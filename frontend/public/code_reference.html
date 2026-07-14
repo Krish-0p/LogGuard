@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Obsidian Telemetry - Overview Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-background": "#e3e1e9",
+                        "on-secondary-container": "#563400",
+                        "inverse-surface": "#e3e1e9",
+                        "on-primary-container": "#002e3b",
+                        "inverse-primary": "#006780",
+                        "inverse-on-surface": "#2f3036",
+                        "primary-container": "#009dc1",
+                        "surface-container-lowest": "#0d0e13",
+                        "surface-container": "#1e1f25",
+                        "tertiary-container": "#00a657",
+                        "on-error": "#690005",
+                        "primary-fixed": "#b7eaff",
+                        "on-secondary": "#472a00",
+                        "on-surface-variant": "#c0c7d4",
+                        "secondary": "#ffb961",
+                        "on-surface": "#e3e1e9",
+                        "on-primary-fixed-variant": "#004e61",
+                        "tertiary-fixed": "#6bfe9c",
+                        "tertiary-fixed-dim": "#4ae183",
+                        "surface-container-highest": "#34343a",
+                        "surface-container-low": "#1a1b20",
+                        "on-tertiary-fixed-variant": "#005228",
+                        "tertiary": "#4ae183",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed": "#00210c",
+                        "error-container": "#93000a",
+                        "outline-variant": "#404752",
+                        "on-secondary-fixed": "#2b1700",
+                        "surface-container-high": "#292a2f",
+                        "on-primary-fixed": "#001f28",
+                        "on-secondary-fixed-variant": "#663e00",
+                        "primary-fixed-dim": "#5bd5fc",
+                        "on-tertiary": "#003919",
+                        "outline": "#8a919e",
+                        "surface": "#121318",
+                        "on-tertiary-container": "#003115",
+                        "background": "#121318",
+                        "surface-tint": "#5bd5fc",
+                        "surface-dim": "#121318",
+                        "on-primary": "#003543",
+                        "secondary-fixed-dim": "#ffb961",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#34343a",
+                        "secondary-container": "#e89300",
+                        "secondary-fixed": "#ffddb9",
+                        "primary": "#5bd5fc",
+                        "surface-bright": "#38393e"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121318;
+            color: #e3e1e9;
+        }
+        /* Custom scrollbar for data-dense areas */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: #121318; }
+        ::-webkit-scrollbar-thumb { background: #34343a; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full flex flex-col z-40 bg-[#0a0b0e] w-64 border-r-0">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 bg-primary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+<div>
+<h2 class="text-on-surface font-bold text-sm tracking-tight">Core Engine</h2>
+<p class="text-on-surface-variant text-[10px] uppercase tracking-widest">v4.2.0-stable</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 text-[#5bd5fc] border-l-4 border-[#5bd5fc] bg-[#1e1f25] px-4 py-3 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-medium text-sm">Overview</span>
+</a>
+<a class="flex items-center gap-3 text-[#c0c7d4] px-4 py-3 hover:bg-[#1e1f25] hover:text-[#e3e1e9] transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">segment</span>
+<span class="font-medium text-sm">Log Explorer</span>
+</a>
+<a class="flex items-center gap-3 text-[#c0c7d4] px-4 py-3 hover:bg-[#1e1f25] hover:text-[#e3e1e9] transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-medium text-sm">Model Performance</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 space-y-4">
+<button class="w-full bg-primary text-on-primary py-2.5 rounded-lg font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all">
+                Deploy New Node
+            </button>
+<div class="pt-4 border-t border-outline-variant/10">
+<a class="flex items-center gap-3 text-[#c0c7d4] px-4 py-2 text-sm hover:text-on-surface" href="#">
+<span class="material-symbols-outlined text-lg">help</span>
+                    Documentation
+                </a>
+<a class="flex items-center gap-3 text-[#c0c7d4] px-4 py-2 text-sm hover:text-on-surface" href="#">
+<span class="material-symbols-outlined text-lg">contact_support</span>
+                    Support
+                </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex flex-col h-screen">
+<!-- Top Navigation Bar -->
+<header class="flex justify-between items-center w-full px-8 h-16 bg-[#121318] z-30">
+<div class="flex items-center gap-8">
+<h1 class="text-xl font-black tracking-tighter text-[#5bd5fc]">OBSIDIAN TELEMETRY</h1>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-[#c0c7d4] text-xs font-bold uppercase tracking-wider hover:text-[#5bd5fc] transition-colors" href="#">Systems</a>
+<a class="text-[#c0c7d4] text-xs font-bold uppercase tracking-wider hover:text-[#5bd5fc] transition-colors" href="#">Nodes</a>
+<a class="text-[#c0c7d4] text-xs font-bold uppercase tracking-wider hover:text-[#5bd5fc] transition-colors" href="#">Protocols</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-secondary rounded-full border-2 border-[#121318]"></span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">settings</span>
+<div class="h-8 w-8 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant/30">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="portrait of a software engineer in a dark office setting with blue ambient light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZXSYsfJc5cCXqzIV7A_vXnSOw18GqNU_rzIQBvW-vFdVm7WF6XE1U4vcdXinjsMe8d-j891AIX4CQgOcRdlaNHEpU1a0oaikKcTgtoASp_7hX4eU7rHgjwzbYhLzqbi_4D20o7MRlZ3plJB7eB_JZ5XQpuMPl2tp6kz-X6edsn5g81UohXAigQM2flfX5Q9OONTarToJ0UqEt7DKZ6lfR4go9kbkmDmqPHF0akTm2_fxEplnGWs2Cb7LXpZ6e_7nHqS-dQFLH41oL"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<div class="flex-1 overflow-y-auto p-8 space-y-8 bg-[#121318]">
+<!-- KPI Section (Asymmetric Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<!-- Large Status Card -->
+<div class="md:col-span-2 bg-surface-container rounded-xl p-6 flex flex-col justify-between border-l-4 border-primary">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1">Active Anomalies</p>
+<h3 class="text-4xl font-black tracking-tighter text-on-surface">1,284</h3>
+</div>
+<div class="p-2 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">warning</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="text-tertiary text-xs font-bold">+12.4%</span>
+<p class="text-on-surface-variant text-[10px]">vs previous 24h window</p>
+</div>
+</div>
+<div class="bg-surface-container rounded-xl p-6 flex flex-col justify-between">
+<div>
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1">Monitored Hosts</p>
+<h3 class="text-3xl font-black tracking-tighter text-on-surface">42,901</h3>
+</div>
+<div class="mt-4 h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="w-4/5 h-full bg-primary"></div>
+</div>
+</div>
+<div class="bg-surface-container rounded-xl p-6 flex flex-col justify-between">
+<div>
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1">Inference Latency</p>
+<h3 class="text-3xl font-black tracking-tighter text-tertiary">14ms</h3>
+</div>
+<p class="text-on-surface-variant text-[10px] uppercase">Stable | Region: US-EAST-1</p>
+</div>
+</div>
+<!-- Visual Analytics Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Anomaly Score Timeline -->
+<div class="lg:col-span-2 bg-surface-container rounded-xl p-8">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h4 class="text-on-surface font-bold text-lg tracking-tight">Anomaly Score Timeline</h4>
+<p class="text-on-surface-variant text-xs">Real-time signal decomposition across all nodes</p>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1 bg-surface-container-high text-[10px] font-bold rounded-md text-on-surface-variant hover:text-primary transition-colors">1H</button>
+<button class="px-3 py-1 bg-primary text-[10px] font-bold rounded-md text-on-primary">6H</button>
+<button class="px-3 py-1 bg-surface-container-high text-[10px] font-bold rounded-md text-on-surface-variant hover:text-primary transition-colors">24H</button>
+</div>
+</div>
+<!-- Simplified Visual Chart Representation -->
+<div class="h-64 flex items-end gap-1 group relative">
+<!-- Chart Tooltip Mockup -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 bg-surface-container-highest/90 backdrop-blur-md px-3 py-2 rounded-lg border border-outline-variant/20 shadow-xl opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none">
+<p class="text-[10px] text-on-surface-variant">02:45 AM UTC</p>
+<p class="text-xs font-bold text-primary">Score: 0.942 (Critical)</p>
+</div>
+<!-- Bar sequence -->
+<div class="flex-1 bg-surface-container-high h-[20%] rounded-t-sm hover:bg-primary/50 transition-colors"></div>
+<div class="flex-1 bg-surface-container-high h-[25%] rounded-t-sm hover:bg-primary/50 transition-colors"></div>
+<div class="flex-1 bg-surface-container-high h-[18%] rounded-t-sm hover:bg-primary/50 transition-colors"></div>
+<div class="flex-1 bg-surface-container-high h-[40%] rounded-t-sm hover:bg-primary/50 transition-colors"></div>
+<div class="flex-1 bg-surface-container-high h-[55%] rounded-t-sm hover:bg-primary/50 transition-colors"></div>
+<div class="flex-1 bg-secondary/60 h-[85%] rounded-t-sm hover:bg-secondary transition-colors"></div>
+<div class="flex-1 bg-error-container/60 h-[95%] rounded-t-sm hover:bg-error transition-colors"></div>
+<div class="flex-1 bg-secondary/60 h-[70%] rounded-t-sm hover:bg-secondary transition-colors"></div>
+<div class="flex-1 bg-surface-container-high h-[30%] rounded-t-sm hover:bg-primary/50 transition-colors"></div>
+<div class="flex-1 bg-surface-container-high h-[22%] rounded-t-sm hover:bg-primary/50 transition-colors"></div>
+<div class="flex-1 bg-surface-container-high h-[15%] rounded-t-sm hover:bg-primary/50 transition-colors"></div>
+<div class="flex-1 bg-surface-container-high h-[28%] rounded-t-sm hover:bg-primary/50 transition-colors"></div>
+<div class="flex-1 bg-surface-container-high h-[45%] rounded-t-sm hover:bg-primary/50 transition-colors"></div>
+<div class="flex-1 bg-surface-container-high h-[35%] rounded-t-sm hover:bg-primary/50 transition-colors"></div>
+<div class="flex-1 bg-surface-container-high h-[20%] rounded-t-sm hover:bg-primary/50 transition-colors"></div>
+<div class="flex-1 bg-surface-container-high h-[12%] rounded-t-sm hover:bg-primary/50 transition-colors"></div>
+<div class="flex-1 bg-surface-container-high h-[18%] rounded-t-sm hover:bg-primary/50 transition-colors"></div>
+<div class="flex-1 bg-surface-container-high h-[30%] rounded-t-sm hover:bg-primary/50 transition-colors"></div>
+<div class="flex-1 bg-surface-container-high h-[25%] rounded-t-sm hover:bg-primary/50 transition-colors"></div>
+<div class="flex-1 bg-surface-container-high h-[10%] rounded-t-sm hover:bg-primary/50 transition-colors"></div>
+</div>
+</div>
+<!-- Model Breakdown Card -->
+<div class="bg-surface-container rounded-xl p-8">
+<h4 class="text-on-surface font-bold text-lg tracking-tight mb-6">Model Logic Weight</h4>
+<div class="space-y-8">
+<div>
+<div class="flex justify-between items-center mb-3">
+<span class="text-xs font-bold text-on-surface">Autoencoder</span>
+<span class="text-xs font-black text-primary">60%</span>
+</div>
+<div class="h-2 bg-surface-container-highest rounded-full">
+<div class="w-[60%] h-full bg-primary rounded-full shadow-[0_0_10px_rgba(91,213,252,0.4)]"></div>
+</div>
+<p class="mt-2 text-[10px] text-on-surface-variant leading-relaxed">Handling deep reconstruction error analysis for complex packet patterns.</p>
+</div>
+<div>
+<div class="flex justify-between items-center mb-3">
+<span class="text-xs font-bold text-on-surface">Isolation Forest</span>
+<span class="text-xs font-black text-secondary">40%</span>
+</div>
+<div class="h-2 bg-surface-container-highest rounded-full">
+<div class="w-[40%] h-full bg-secondary rounded-full shadow-[0_0_10px_rgba(255,185,97,0.4)]"></div>
+</div>
+<p class="mt-2 text-[10px] text-on-surface-variant leading-relaxed">Identifying rapid structural deviations in high-volume traffic clusters.</p>
+</div>
+</div>
+<div class="mt-8 p-4 bg-surface-container-low rounded-lg border border-outline-variant/10">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-tertiary text-sm">verified</span>
+<span class="text-[10px] font-bold text-tertiary uppercase tracking-tighter">Model Consensus: High</span>
+</div>
+<p class="text-[10px] text-on-surface-variant">Both models currently align on detected patterns with 94.2% confidence.</p>
+</div>
+</div>
+</div>
+<!-- Recent Detection Manifest Table -->
+<div class="bg-surface-container rounded-xl overflow-hidden">
+<div class="px-8 py-6 border-b border-outline-variant/10 flex justify-between items-center">
+<h4 class="text-on-surface font-bold text-lg tracking-tight">Recent Detection Manifest</h4>
+<button class="text-xs text-primary font-bold flex items-center gap-1 hover:underline">
+                        Export Full Logs <span class="material-symbols-outlined text-sm">download</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low text-[10px] uppercase tracking-widest text-on-surface-variant">
+<th class="px-8 py-4 font-black">Timestamp (UTC)</th>
+<th class="px-8 py-4 font-black">Entity / Node ID</th>
+<th class="px-8 py-4 font-black">Vector Type</th>
+<th class="px-8 py-4 font-black">Confidence</th>
+<th class="px-8 py-4 font-black">Severity</th>
+<th class="px-8 py-4 font-black text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="px-8 py-5 text-sm font-mono text-on-surface-variant">14:02:45.102</td>
+<td class="px-8 py-5 text-sm font-bold text-on-surface">node-alpha-712</td>
+<td class="px-8 py-5 text-sm text-on-surface-variant">Payload Divergence</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-2">
+<div class="w-12 h-1.5 bg-surface-container-highest rounded-full">
+<div class="w-[98%] h-full bg-primary rounded-full"></div>
+</div>
+<span class="text-[10px] font-bold">98%</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<span class="px-2 py-1 bg-error-container text-on-error-container text-[10px] font-black uppercase rounded sm">Critical</span>
+</td>
+<td class="px-8 py-5 text-right">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer group-hover:text-primary transition-colors">more_vert</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="px-8 py-5 text-sm font-mono text-on-surface-variant">13:58:22.914</td>
+<td class="px-8 py-5 text-sm font-bold text-on-surface">node-zeta-009</td>
+<td class="px-8 py-5 text-sm text-on-surface-variant">Inbound Burst</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-2">
+<div class="w-12 h-1.5 bg-surface-container-highest rounded-full">
+<div class="w-[72%] h-full bg-primary rounded-full"></div>
+</div>
+<span class="text-[10px] font-bold">72%</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-fixed-variant text-[10px] font-black uppercase rounded sm">Warning</span>
+</td>
+<td class="px-8 py-5 text-right">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer group-hover:text-primary transition-colors">more_vert</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="px-8 py-5 text-sm font-mono text-on-surface-variant">13:45:10.552</td>
+<td class="px-8 py-5 text-sm font-bold text-on-surface">gateway-core-01</td>
+<td class="px-8 py-5 text-sm text-on-surface-variant">Protocol Mismatch</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-2">
+<div class="w-12 h-1.5 bg-surface-container-highest rounded-full">
+<div class="w-[88%] h-full bg-primary rounded-full"></div>
+</div>
+<span class="text-[10px] font-bold">88%</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<span class="px-2 py-1 bg-error-container text-on-error-container text-[10px] font-black uppercase rounded sm">Critical</span>
+</td>
+<td class="px-8 py-5 text-right">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer group-hover:text-primary transition-colors">more_vert</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="px-8 py-5 text-sm font-mono text-on-surface-variant">13:30:01.002</td>
+<td class="px-8 py-5 text-sm font-bold text-on-surface">edge-service-prox</td>
+<td class="px-8 py-5 text-sm text-on-surface-variant">Latent Drift</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-2">
+<div class="w-12 h-1.5 bg-surface-container-highest rounded-full">
+<div class="w-[45%] h-full bg-primary rounded-full"></div>
+</div>
+<span class="text-[10px] font-bold">45%</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<span class="px-2 py-1 bg-tertiary/20 text-tertiary text-[10px] font-black uppercase rounded sm">Insight</span>
+</td>
+<td class="px-8 py-5 text-right">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer group-hover:text-primary transition-colors">more_vert</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-6 flex justify-center bg-surface-container-low/30">
+<button class="text-[10px] font-black uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors">Load Archive Entries</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>
